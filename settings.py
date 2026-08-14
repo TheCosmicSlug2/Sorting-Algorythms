@@ -1,7 +1,7 @@
-screend = (800, 600)
+SCREEN_DIMS = (800, 600)
 nb_values = 100
 line_width = 5
-tot_x = screend[0] - line_width * nb_values
+tot_x = SCREEN_DIMS[0] - line_width * nb_values
 startx = tot_x // 2
 bottom_margin = 100
 

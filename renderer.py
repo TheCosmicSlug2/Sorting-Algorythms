@@ -2,14 +2,15 @@ import pygame as pg
 from settings import *
 
 class Renderer:
-    def __init__(self) -> None:
+    def __init__(self, nb_valeurs) -> None:
         pg.init()
-        self.screen = pg.display.set_mode(screend)
+        self.screen = pg.display.set_mode(SCREEN_DIMS)
         pg.display.set_caption('Sorting algorythms')
         self.clock = pg.time.Clock()
 
         self.fps = FPS
-        self.ratio = (screend[1] - 200) / nb_values
+        self.bar_width = (SCREEN_DIMS[0] - 200) / nb_valeurs
+        self.ratio = (SCREEN_DIMS[1] - 200) / nb_valeurs
 
     def fill_screen(self, color):
         self.screen.fill(color)
@@ -17,12 +18,14 @@ class Renderer:
     def draw_lines(self, array, current):
         self.fill_screen(BLACK)
 
-        for idx, nb in enumerate(array):
+        for idx, value in enumerate(array):
             color = RED if idx == current else WHITE
-            new_nb = nb * self.ratio
-            x = startx + (idx * line_width)
-            y = screend[1] - (bottom_margin + new_nb)
-            rect = pg.Rect(x, y, line_width, new_nb)
+
+            hauteur = value * self.ratio
+            x = 100 + idx * self.bar_width
+            y = SCREEN_DIMS[1] - (bottom_margin + hauteur)
+
+            rect = pg.Rect(x, y, self.bar_width, hauteur)
             pg.draw.rect(self.screen, color, rect)
 
         pg.display.flip()
