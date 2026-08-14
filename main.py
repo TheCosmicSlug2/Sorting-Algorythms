@@ -28,64 +28,76 @@ SLOW_SORTS = {
 
 SORT_MENU_WIDGETS = {
     0: sf.Label(
-        (220, 50), (350, 80),
+        (150, 45), (500, 85),
         "Sorting Algorithms",
         sf.WHITE,
-        text_height=40,
-        colors=[sf.WHITE, sf.BLACK, sf.WHITE, sf.BLACK],
-        borders=[3, 3, 3]
-    ),
-
-    1: sf.Label(
-        (200, 180), (200, 30),
-        "Number of values :",
-        sf.WHITE,
-        text_height=25,
-        colors=[sf.TRANSPARENT]
-    ),
-
-    2: sf.Slider(
-        (420, 180), (150, 30),
-        _range=(50, 200),
-        default_value=100,
-        colors=[sf.WHITE, sf.BLACK],
-        bar_text_fg=sf.WHITE
-    ),
-
-    3: sf.Label(
-        (270, 230), (150, 30),
-        "Algorithm :",
-        sf.WHITE,
-        text_height=25,
-        colors=[sf.TRANSPARENT]
-    ),
-
-    4: sf.List(
-        (420, 230), (180, 30),
-        text_height=18,
-        values=["All"] + list(SORTS.keys()),
-        colors=[sf.WHITE, sf.BLACK],
-        text_color=sf.WHITE
-
-    ),
-
-    5: sf.Button(
-        (285, 430), (230, 60),
-        text="Start",
-        return_value="quit",
-        textfg=sf.WHITE,
-        text_height=20,
+        text_height=42,
         colors=[
             sf.WHITE,
             sf.BLACK,
             sf.WHITE,
-            (20, 20, 20)
+            sf.BLACK
+        ],
+        borders=[3, 3, 3]
+    ),
+
+    1: sf.Label(
+        (155, 190), (250, 35),
+        "Number of values",
+        sf.WHITE,
+        text_height=24,
+        colors=[sf.TRANSPARENT]
+    ),
+
+    2: sf.Slider(
+        (425, 190), (220, 35),
+        _range=(50, 200),
+        default_value=100,
+        colors=[
+            sf.WHITE,
+            sf.BLACK
+        ],
+        bar_text_fg=sf.WHITE
+    ),
+
+    3: sf.Label(
+        (155, 265), (250, 35),
+        "Algorithm",
+        sf.WHITE,
+        text_height=24,
+        colors=[sf.TRANSPARENT]
+    ),
+
+    4: sf.List(
+        (425, 265), (220, 35),
+        text_height=19,
+        values=["All"] + list(SORTS.keys()),
+        colors=[
+            sf.WHITE,
+            sf.BLACK
+        ],
+        text_color=sf.WHITE
+    ),
+
+    5: sf.Button(
+        (270, 410), (260, 65),
+        text="START",
+        return_value="quit",
+        textfg=sf.WHITE,
+        text_height=25,
+        colors=[
+            sf.WHITE,
+            sf.BLACK,
+            sf.WHITE,
+            sf.BLACK
         ],
         borders=[3, 3, 3],
-        animation={"color": -6, "size": (3, 2)}
+        animation={
+            "color": -6,
+            "size": (3, 2)
+        }
     ),
 }
-
 
 def execute_sorting(sorts, nb_values):
     renderer = Renderer(nb_values)
@@ -116,6 +128,7 @@ def menu():
 
     nb_values = values[2]
     selected = values[4]
+
 
     sorts = list(SORTS.values()) if selected == "All" else [SORTS[selected]]
 
